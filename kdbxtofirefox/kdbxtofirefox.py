@@ -3,13 +3,16 @@ from absl import flags
 import os
 import parse_helper as parser
 import csv_types as types
+import numpy as np
+import pandas as pd
+import csv
 
 FLAGS = flags.FLAGS
 
 # Flag names are globally defined!  So in general, we need to be
 # careful to pick names that are unlikely to be used by other libraries.
 # If there is a conflict, we'll get an error at import time.
-flags.DEFINE_string('input', None, 'kdbx of firefox password csv file location')
+flags.DEFINE_string('input', None, 'kdbx or firefox password csv file location')
 flags.DEFINE_string('output', None, 'output file location')
 flags.DEFINE_boolean('debug', False, 'Produces debugging output.')
 
@@ -48,6 +51,9 @@ def main(argv):
       res = parser.convertToKdbx(FLAGS.input)
     if type is types.Types.KDBX:
       res = parser.convertToFirefox(FLAGS.input)
+      #check if url is presend. if not than do not include the columns to the csv
     print(type)
+  #write to output 
+  pd.DataFrame(res).to_csv(FLAGS.output,header=False,index=False,quoting=csv.QUOTE_ALL)
 if __name__ == '__main__':
   app.run(main)

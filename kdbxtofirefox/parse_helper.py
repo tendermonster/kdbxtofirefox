@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import csv_types as types
+import kdbxtofirefox.csv_types as types
 import time
 """
 Parse kdbs and or firefox password databases

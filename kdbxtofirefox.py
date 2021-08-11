@@ -1,8 +1,8 @@
 from absl import app
 from absl import flags
 import os
-import parse_helper as parser
-import csv_types as types
+import kdbxtofirefox.parse_helper as parser
+import kdbxtofirefox.csv_types as types
 import numpy as np
 import pandas as pd
 import csv

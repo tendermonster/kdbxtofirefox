@@ -1,4 +1,3 @@
-numpy==1.19.5
-pandas==1.1.3
-absl_py==0.11.0
-absl==0.0
+numpy~=1.24.1
+pandas~=1.5.3
+absl_py~=1.4.0
